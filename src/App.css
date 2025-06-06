@@ -1,38 +1,145 @@
-.App {
+body {
+  background-color: #f8fafc;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+}
+
+header,
+nav {
+  background: #18428a;
+  box-shadow: 0 4px 24px 0 rgba(34, 67, 142, 0.08), 0 1.5px 5px 0 rgba(20, 37, 63, 0.03);
+  padding-top: 0.3rem !important;
+  padding-bottom: 0.3rem !important;
+}
+
+nav a {
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 1rem;
+  padding: 0.3rem 1rem;
+  margin: 0 0.5rem;
+  transition: background 0.15s;
+  text-decoration: none;
+  position: center;
+}
+
+nav a:hover,
+nav a.active {
+  background: #396fd6;
+  color: #fffno;
+}
+
+.container {
+  max-width: 900px;
+  max-height: 140px;
+  margin: 0 auto;
+  padding: 2rem 1rem 2rem 1rem;
+}
+
+.card, .main-card {
+  background: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(34, 67, 142, 0.10), 0 1.5px 8px 0 rgba(20, 37, 63, 0.07);
+  padding: 2.2rem 2rem;
+  margin-bottom: 2rem;
+  border: none;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #18428a;
+}
+
+.form-control, input[type="text"], input[type="date"] {
+  border-radius: 0.7rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border: 1px solid #c7dbf7;
+  margin-bottom: 1.2rem;
+  width: 100%;
+}
+
+.btn-primary, .submit-btn {
+  background: #18428a;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 1rem;
+  padding: 0.8rem 1.8rem;
+  border: none;
+  box-shadow: 0 2px 12px rgba(34,67,142,0.06);
+  transition: background 0.15s;
+}
+
+.btn-primary:hover, .submit-btn:hover {
+  background: #396fd6;
+  color: #fff;
+}
+
+h1, .display-5, .page-title {
+  color: #18428a;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.7em;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2, h3 {
+  color: #396fd6;
+  font-weight: 700;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+h4 {
+  color: #555;
+  font-weight: 700;
+}
+
+.footer, footer {
+  color: #8091b6;
+  background: none;
+  font-size: 0.97em;
+  padding: 1.5em 0 0 0;
+  text-align: center;
+  border: none;
+  margin-top: 3rem;
+}
+
+ul {
+  margin-left: 1.1em;
+  margin-bottom: 1.4em;
+}
+
+@media (max-width: 700px) {
+  .container, .main-card, .card {
+    padding: 1.1rem 0.7rem;
+    border-radius: 1rem;
+  }
+  h1, .display-5, .page-title {
+    font-size: 2rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.nav-logo {
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+  background: transparent !important;
+  transition: none !important;
+}
+.nav-logo:hover,
+.nav-logo:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+  background: transparent !important;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media (max-width: 700px) {
+  .nav-logo {
+    height: 64px !important;
+    width: 64px !important;
   }
 }
