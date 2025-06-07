@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, GeoJSON, CircleMarker, Popup, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-const MAP_IMAGE_URL = "https://i.imgur.com/CJ1CJf8.png";
+
+
+
+const findgoodroofingnow = "https://findgoodroofingnow.png";
 
 const storms = [
   {
@@ -354,7 +357,7 @@ export default function DamageTracker() {
         {/* === STATIC MAP IMAGE SECTION === */}
         <div className="card mb-4 p-3 text-center">
           <img
-            src={MAP_IMAGE_URL}
+            src={findgoodroofingnow.png}
             alt="North Texas hail storm map"
             className="img-fluid rounded mb-3"
             style={{ maxWidth: "100%" }}
