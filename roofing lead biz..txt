@@ -369,3 +369,35 @@ You can do this on a shoestring and still blow away the “big” competitors.
 You can build proprietary, valuable, and “sticky” SaaS without big data bills.
 
 When you’re ready to scale (or charge others), you’ll already have the data pipeline and logic.
+
+
+
+Scan posts from Twitter, Reddit, (optionally, weather/roofing/news sources).
+
+ONLY keep posts with images for social.
+
+If it’s a “roofing” or “hailmap”/news/weather station account, check if text says “confirmed.” If yes, MEDIUM; if also image, HIGH.
+
+Cluster results by county, date, image count, and certainty.
+
+Output only MEDIUM/HIGH, never text-only social posts.
+
+How to run the updated script:
+I’ll adjust the starter script accordingly (for Twitter/Reddit).
+
+You’ll need your API keys (let me know if you want to run or want me to run).
+
+Output will be a .json file with only events that match the logic above.
+
+Any other logic you want before I finalize this and run it?
+You are right: “eyeball test” is better than rumor for roofing.
+
+“Confirmed” by a human/weather/roof source, or lots of photos, is the only gold standard.
+
+
+Reddit gives full year, but only for public posts. lets target these 
+
+
+
+
+

@@ -25,7 +25,7 @@ nav a {
 
 nav a:hover,
 nav a.active {
-  background: #396fd6;
+  background: #0a2049;
   color: #fffno;
 }
 
@@ -143,3 +143,17 @@ ul {
     width: 64px !important;
   }
 }
+
+@media (max-width: 700px) {
+  .map-imgs-wrap {
+    flex-direction: column !important;
+    gap: 1.3em !important;
+  }
+  img {
+    max-width: 96vw !important;
+    height: auto !important;
+    max-height: 260px !important;
+  }
+}
+
+

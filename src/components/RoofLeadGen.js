@@ -2,24 +2,31 @@ import ReviewCard from "./ReviewCard";
 import React, { useState } from "react";
 
 export default function RoofLeadGen() {
+  const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
     address: "",
     phone: "",
     description: "",
     stormDate: "",
-    insurance: "",
+    insurance: ""
   });
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e) => {
+  // Update state for controlled inputs
+  const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // Custom submit using Formspree AJAX (so you can show custom thank you!)
+  const handleFormSubmit = async e => {
     e.preventDefault();
-    setSubmitted(true);
-    // Store lead locally here, e.g., localStorage or local DB logic
+    const response = await fetch("https://formspree.io/f/xrbkqorq", {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(e.target),
+    });
+    if (response.ok) setSubmitted(true);
+    // Optional: handle errors
   };
 
   return (
@@ -39,9 +46,8 @@ export default function RoofLeadGen() {
         </p>
       </div>
 
-      {/* Two-column layout (desktop: side-by-side, mobile: stacked) */}
       <div className="row justify-content-center mb-4 g-4">
-        {/* Why Choose Us column */}
+        {/* Why Choose Us */}
         <div className="col-12 col-lg-6">
           <div className="card p-4 h-100">
             <h2 className="h4 text-primary mb-3">Why North Texas Homeowners Trust Us For Roof Repair</h2>
@@ -65,42 +71,55 @@ export default function RoofLeadGen() {
           </div>
         </div>
 
-        {/* Form column */}
+        {/* FORM */}
         <div className="col-12 col-lg-6">
           <div className="card p-4 h-100">
             {!submitted ? (
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleFormSubmit}>
                 <h3 className="h5 text-primary mb-3">
                   Request Your Free, No-Obligation Roof Inspection
                 </h3>
                 <div className="mb-3">
                   <label className="form-label">Name</label>
-                  <input required name="name" value={form.name} onChange={handleChange} className="form-control" />
+                  <input required name="name" className="form-control" value={form.name} onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Address</label>
-                  <input required name="address" value={form.address} onChange={handleChange} className="form-control" />
+                  <input required name="address" className="form-control" value={form.address} onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Phone</label>
-                  <input required name="phone" value={form.phone} onChange={handleChange} className="form-control" />
+                  <input required name="phone" className="form-control" value={form.phone} onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Brief Description</label>
-                  <input name="description" value={form.description} onChange={handleChange} className="form-control" />
+                  <input name="description" className="form-control" value={form.description} onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Date of Storm</label>
-                  <input required type="date" name="stormDate" value={form.stormDate} onChange={handleChange} className="form-control" />
+                  <input required type="date" name="stormDate" className="form-control" value={form.stormDate} onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Insurance Company</label>
-                  <input name="insurance" value={form.insurance} onChange={handleChange} className="form-control" />
+                  <input name="insurance" className="form-control" value={form.insurance} onChange={handleChange} />
                 </div>
-                <button type="submit" className="btn btn-primary submit-btn w-100">Request Inspection Now</button>
+                <button type="submit" className="btn btn-primary submit-btn w-100">
+                  Request Inspection Now
+                </button>
               </form>
             ) : (
               <div className="text-center py-4">
+                <img
+                  src="/texasroofingthankyou2.png"
+                  alt="Thank you for contacting North Texas Roof Repair"
+                  style={{
+                    maxWidth: 320,
+                    width: "100%",
+                    marginBottom: "1em",
+                    borderRadius: 16,
+                    boxShadow: "0 4px 24px rgba(80,120,170,0.16)"
+                  }}
+                />
                 <h3 className="text-success mb-3">Thank you!</h3>
                 <p>
                   We received your request. A North Texas roof expert will reach out ASAP to schedule your free inspection.<br />
@@ -112,33 +131,31 @@ export default function RoofLeadGen() {
         </div>
       </div>
 
+      {/* Logo & Reviews */}
       <div className="d-flex flex-wrap align-items-center justify-content-center mb-4" style={{ gap: 24 }}>
-  {/* Logo */}
-  <img
-    src="/logo512.png"
-    alt="North Texas Roof Pros"
-    style={{
-      height: 192,
-      width: 192,
-      objectFit: "contain",
-      marginRight: 8,
-      borderRadius: 16,
-      boxShadow: "0 4px 16px rgba(50,70,100,0.08)"
-    }}
-  />
-
-  {/* Review cards */}
-  <ReviewCard
-    quote="After the Plano hail storm, these guys handled everything with my insurance and got my roof replaced fast. Stress free!"
-    name="Emily R."
-    location="Plano, TX"
-  />
-  <ReviewCard
-    quote="A hail storm hit our home in Fort Worth and we had leaks in two rooms. They handled it all—couldn't believe how easy!"
-    name="Samantha H."
-    location="Fort Worth, TX"
-  />
-</div>
+        <img
+          src="/logo512.png"
+          alt="North Texas Roof Pros"
+          style={{
+            height: 192,
+            width: 192,
+            objectFit: "contain",
+            marginRight: 8,
+            borderRadius: 16,
+            boxShadow: "0 4px 16px rgba(50,70,100,0.08)"
+          }}
+        />
+        <ReviewCard
+          quote="After the Plano hail storm, these guys handled everything with my insurance and got my roof replaced fast. Stress free!"
+          name="Emily R."
+          location="Plano, TX"
+        />
+        <ReviewCard
+          quote="A hail storm hit our home in Fort Worth and we had leaks in two rooms. They handled it all—couldn't believe how easy!"
+          name="Samantha H."
+          location="Fort Worth, TX"
+        />
+      </div>
 
       {/* SEO FOOTER */}
       <footer className="footer">

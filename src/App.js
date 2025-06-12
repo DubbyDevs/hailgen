@@ -18,73 +18,159 @@ const navLinks = [
   { name: "Contact", path: "/contact" },
 ];
 
-// Logo behavior and nav need router context, so make a subcomponent:
 function Navbar({ logoSrc, setLogoSrc }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogoClick = () => {
-    // If on home, go to Damage Tracker
     if (location.pathname === "/") {
       navigate("/damage-tracker");
     } else {
-      // Else go to home
       navigate("/");
     }
   };
 
+  // Detect current route for "active" style
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <nav className="w-100 bg-blue-900 py-1 shadow">
-      <div className="container d-flex align-items-center" style={{ gap: 8 }}>
+    <nav className="navbar-root">
+      <div className="navbar-container">
         {/* Logo */}
         <button
           type="button"
           onClick={handleLogoClick}
-          style={{
-            padding: 0,
-            border: "none",
-            background: "transparent",
-            marginRight: 6,
-            display: "flex",
-            alignItems: "center",
-            cursor: "pointer"
-          }}
-          tabIndex={0}
+          className="logo-btn"
           aria-label="Roofers Home"
+          tabIndex={0}
         >
           <img
             src={logoSrc}
             alt="Find The Best Roofers"
             className="nav-logo"
-            style={{
-              height: 192,
-              width: 192,
-              objectFit: "contain",
-              display: "block",
-              background: "transparent",
-              border: "none",
-              boxShadow: "none",
-              outline: "none",
-            }}
             onMouseEnter={() => setLogoSrc("/findthebestroofersblue.png")}
             onMouseLeave={() => setLogoSrc("/findthebestroofersred.png")}
             draggable={false}
           />
         </button>
-        {/* Nav links */}
-        <div className="d-flex flex-wrap align-items-center gap-2">
+        {/* Hamburger */}
+        <button
+          className="hamburger"
+          aria-label="Toggle Menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        {/* Links */}
+        <div className={`nav-links${menuOpen ? " open" : ""}`}>
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className="text-white font-semibold px-3 py-1 rounded-xl hover:bg-blue-700 transition"
-              style={{ textDecoration: "none" }}
+              className={`nav-link${isActive(link.path) ? " active" : ""}`}
+              onClick={() => setMenuOpen(false)}
             >
               {link.name}
             </Link>
           ))}
         </div>
       </div>
+      {/* Styles right in here for easy drop-in */}
+      <style>{`
+        .navbar-root {
+          width: 100%;
+          background: #18428a;
+          box-shadow: 0 2px 16px #0c234016;
+          z-index: 12;
+        }
+        .navbar-container {
+          max-width: 1152px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.4em 2vw 0.4em 2vw;
+        }
+        .logo-btn {
+          padding: 0;
+          border: none;
+          background: transparent;
+          margin-right: 6px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+        .nav-logo {
+          height: 80px;
+          width: 80px;
+          object-fit: contain;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+          outline: none;
+        }
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+        .nav-link {
+          color: #fff;
+          font-weight: 600;
+          text-decoration: none;
+          font-size: 1.1rem;
+          padding: 0.25em 1em;
+          border-radius: 8px;
+          transition: background 0.15s;
+        }
+        .nav-link:hover, .nav-link.active {
+          background: #2b56a5;
+          color: #ffd700;
+        }
+        .hamburger {
+          display: none;
+          flex-direction: column;
+          gap: 4px;
+          background: transparent;
+          border: none;
+          margin-left: 8px;
+          cursor: pointer;
+        }
+        .hamburger span {
+          width: 28px;
+          height: 3px;
+          background: #fff;
+          border-radius: 3px;
+          display: block;
+        }
+        @media (max-width: 790px) {
+          .navbar-container {
+            flex-wrap: wrap;
+          }
+          .nav-links {
+            position: absolute;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: #18428a;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 1em 2em;
+            gap: 0.2em;
+            display: none;
+          }
+          .nav-links.open {
+            display: flex;
+          }
+          .hamburger {
+            display: flex;
+          }
+        }
+      `}</style>
     </nav>
   );
 }
