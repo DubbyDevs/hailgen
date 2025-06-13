@@ -160,7 +160,7 @@ export default function RoofLeadGen() {
       {/* SEO FOOTER */}
       <footer className="footer">
         <div className="mb-2">
-          © 2025 North Texas Roof Repair. Local, licensed roofers serving Dallas-Fort Worth and all North Texas suburbs.
+          TexasRoofing.info is NOT affiliated with TexasRoofing.com - Local, licensed roofers serving Dallas-Fort Worth and all North Texas suburbs.
           Need help with hail damage or a roof insurance claim? Request your free estimate now.
         </div>
         <div className="mb-1">

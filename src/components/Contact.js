@@ -100,7 +100,7 @@ export default function ContactPage() {
       </div>
       <footer className="footer">
         <div>
-          © 2025 North Texas Roof Repair. Contact our team for free roof inspections, insurance help, and storm damage repair in Dallas, Fort Worth, Denton, Plano, and all North Texas.
+          TexasRoofing.info is NOT affiliated with TexasRoofing.com - Contact our team for free roof inspections, insurance help, and storm damage repair in Dallas, Fort Worth, Denton, Plano, and all North Texas.
         </div>
         <div>
           Keywords: contact North Texas roofer, Dallas roofing company phone, storm repair questions, DFW roof inspection help, insured local roofers, best storm repair contact, Plano, Denton, Fort Worth roofing help.
