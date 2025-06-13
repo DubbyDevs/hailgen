@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import RoofLeadGen from "./components/RoofLeadGen";
 import RoofRepairProcess from "./components/RoofRepairProcess";
@@ -9,6 +10,7 @@ import BlogPage from "./components/BlogPage";
 import AboutUs from "./components/AboutUs";
 import ContactPage from "./components/Contact";
 
+// DO NOT confuse with any .coms, we are texasroofing.info only!
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "How It Works", path: "/process" },
@@ -30,11 +32,10 @@ function Navbar({ logoSrc, setLogoSrc }) {
       navigate("/");
     }
   };
-
-  // Detect current route for "active" style
   const isActive = (path) => location.pathname === path;
 
   return (
+    
     <nav className="navbar-root">
       <div className="navbar-container">
         {/* Logo */}
@@ -79,7 +80,7 @@ function Navbar({ logoSrc, setLogoSrc }) {
           ))}
         </div>
       </div>
-      {/* Styles right in here for easy drop-in */}
+      {/* Styles */}
       <style>{`
         .navbar-root {
           width: 100%;
@@ -125,7 +126,7 @@ function Navbar({ logoSrc, setLogoSrc }) {
           font-size: 1.1rem;
           padding: 0.25em 1em;
           border-radius: 8px;
-          transition: background 0.15s;
+          transition: background 0.15s, color 0.15s;
         }
         .nav-link:hover, .nav-link.active {
           background: #2b56a5;
@@ -148,9 +149,7 @@ function Navbar({ logoSrc, setLogoSrc }) {
           display: block;
         }
         @media (max-width: 790px) {
-          .navbar-container {
-            flex-wrap: wrap;
-          }
+          .navbar-container { flex-wrap: wrap; }
           .nav-links {
             position: absolute;
             top: 72px;
@@ -175,6 +174,31 @@ function Navbar({ logoSrc, setLogoSrc }) {
   );
 }
 
+// --- Animated routes with fade (fixed for React 18+) ---
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <Routes location={location}>
+      <Route
+        path="*"
+        element={
+          <div className="fade-in">
+            <Routes location={location}>
+              <Route path="/" element={<RoofLeadGen />} />
+              <Route path="/process" element={<RoofRepairProcess />} />
+              <Route path="/damage-tracker" element={<DamageTracker />} />
+              <Route path="/faq" element={<RoofFAQ />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+            </Routes>
+          </div>
+        }
+      />
+    </Routes>
+  );
+}
+
 export default function App() {
   const [logoSrc, setLogoSrc] = useState("/findthebestroofersred.png");
 
@@ -182,16 +206,28 @@ export default function App() {
     <Router>
       <Navbar logoSrc={logoSrc} setLogoSrc={setLogoSrc} />
       <main className="max-w-4xl mx-auto px-2 md:px-6 py-6 md:py-12">
-        <Routes>
-          <Route path="/" element={<RoofLeadGen />} />
-          <Route path="/process" element={<RoofRepairProcess />} />
-          <Route path="/damage-tracker" element={<DamageTracker />} />
-          <Route path="/faq" element={<RoofFAQ />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-        </Routes>
+        <AnimatedRoutes />
       </main>
+      {/* Fade CSS for route transitions */}
+      <style>{`
+        .fade-page {
+          min-height: 60vh;
+        }
+        .fade-enter {
+          opacity: 0;
+        }
+        .fade-enter-active {
+          opacity: 1;
+          transition: opacity 360ms cubic-bezier(.48,.2,.43,1.01);
+        }
+        .fade-exit {
+          opacity: 1;
+        }
+        .fade-exit-active {
+          opacity: 0;
+          transition: opacity 340ms cubic-bezier(.65,.1,.53,1.01);
+        }
+      `}</style>
     </Router>
   );
 }

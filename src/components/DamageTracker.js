@@ -461,7 +461,7 @@ export default function DamageTracker() {
       </div>
       <footer className="footer">
         <div>
-          © {new Date().getFullYear()} North Texas Roof Repair. Hail damage tracker for Dallas, Fort Worth, Plano, Frisco, McKinney, Denton, and all North Texas. Recent storm map and insurance claim deadlines for local homeowners.
+           Hail damage tracker for Dallas, Fort Worth, Plano, Frisco, McKinney, Denton, and all North Texas. Recent storm map and insurance claim deadlines for local homeowners.TexasRoofing.info is NOT affiliated with TexasRoofing.com
         </div>
         <div>
           <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: "#888", fontSize: "0.96em" }}>

@@ -157,3 +157,10 @@ ul {
 }
 
 
+.fade-in {
+  animation: fadeIn 420ms cubic-bezier(.48,.2,.43,1.01);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
