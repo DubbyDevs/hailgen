@@ -4,7 +4,24 @@ export default function RoofFAQ() {
   return (
     <div className="container">
       <div className="main-card">
-        <h1 className="display-5 page-title">Roof Repair & Insurance FAQ – North Texas</h1>
+        {/* Logo at the top inside main-card */}
+        <div style={{ width: "100%", textAlign: "center", marginBottom: 10 }}>
+          <img
+            src="/texasroofinginfo.png"
+            alt="Texas Roofing Info Logo"
+            style={{
+              maxWidth: 400,
+              width: "100%",
+              height: "auto",
+              margin: "0 auto",
+              display: "block",
+              background: "#fff",
+              borderRadius: 10,
+              boxShadow: "none"
+            }}
+          />
+        </div>
+        <h1 className="display-5 page-title text-center">Roof Repair & Insurance FAQ – North Texas</h1>
         <h2 className="h4 mb-4 text-primary text-center">
           Get Answers to Common Roofing, Hail Damage, and Insurance Claim Questions
         </h2>

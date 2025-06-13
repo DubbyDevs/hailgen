@@ -24,7 +24,26 @@ export default function ContactPage() {
   return (
     <div className="container">
       <div className="main-card">
-        <h1 className="display-5 page-title">Contact North Texas Roof Repair</h1>
+        {/* Logo centered above title */}
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "0em 0 0em 0"
+        }}>
+          <img
+            src="/texasroofinginfo.png"
+            alt="Texas Roofing Info Logo"
+            style={{
+              maxWidth: 400,
+              width: "100%",
+              height: "auto",
+              background: "#fff",
+              borderRadius: 10,
+              boxShadow: "none"
+            }}
+          />
+        </div>
+        <h1 className="display-5 page-title text-center">Contact for TexasRoofing.info</h1>
         <h2 className="h4 mb-4 text-primary text-center">
           Questions? Need Help? Contact Your Local Roofing Pros
         </h2>

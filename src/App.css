@@ -6,7 +6,7 @@ body {
 
 header,
 nav {
-  background: #18428a;
+  background: #00364e;
   box-shadow: 0 4px 24px 0 rgba(34, 67, 142, 0.08), 0 1.5px 5px 0 rgba(20, 37, 63, 0.03);
   padding-top: 0.3rem !important;
   padding-bottom: 0.3rem !important;
@@ -26,14 +26,13 @@ nav a {
 nav a:hover,
 nav a.active {
   background: #0a2049;
-  color: #fffno;
 }
 
 .container {
   max-width: 900px;
   max-height: 140px;
   margin: 0 auto;
-  padding: 2rem 1rem 2rem 1rem;
+  padding: 1rem 1rem 1rem 1rem;
 }
 
 .card, .main-card {
@@ -47,7 +46,7 @@ nav a.active {
 
 .form-label {
   font-weight: 600;
-  color: #18428a;
+  color: #00364e;
 }
 
 .form-control, input[type="text"], input[type="date"] {
@@ -60,7 +59,7 @@ nav a.active {
 }
 
 .btn-primary, .submit-btn {
-  background: #18428a;
+  background: #00364e;
   color: #fff;
   font-weight: 600;
   border-radius: 1rem;
@@ -71,12 +70,12 @@ nav a.active {
 }
 
 .btn-primary:hover, .submit-btn:hover {
-  background: #396fd6;
+  background: #00364e;
   color: #fff;
 }
 
 h1, .display-5, .page-title {
-  color: #18428a;
+  color: #00364e;
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 0.7em;
@@ -84,7 +83,7 @@ h1, .display-5, .page-title {
 }
 
 h2, h3 {
-  color: #396fd6;
+  color: #00364e;
   font-weight: 700;
   margin-top: 1.4em;
   margin-bottom: 0.5em;
