@@ -23,7 +23,7 @@ export default function AboutUs() {
             }}
           />
         </div>
-        <h1 className="display-5 page-title text-center">About TexasRoofing.info</h1>
+        <h1 className="display-5 page-title text-center">About Us</h1>
         <h2 className="h4 mb-4 text-primary text-center">
           We only work with: Local. Licensed. Trusted in Dallas, Fort Worth, Denton, Plano &amp; All DFW
         </h2>
@@ -37,13 +37,14 @@ export default function AboutUs() {
           <p>
             With over 20 years serving DFW—including Dallas, Fort Worth, Denton, Plano, Frisco, and McKinney—we’ve built our reputation on trust, reliability, and unbeatable service during North Texas storm season.
           </p>
-          <ul>
-            <li>Family-owned and operated</li>
-            <li>Fully insured, local North Texas company</li>
-            <li>Hundreds of 5-star reviews from satisfied homeowners</li>
-            <li>Personalized help with insurance claims, inspections, and repairs</li>
-            <li>Fast response and emergency service after hail, wind, or tornadoes</li>
-          </ul>
+          <ul className="about-bullets">
+  <li>Family-owned and operated</li>
+  <li>Fully insured, local North Texas company</li>
+  <li>Hundreds of 5-star reviews from satisfied homeowners</li>
+  <li>Personalized help with insurance claims, inspections, and repairs</li>
+  <li>Fast response and emergency service after hail, wind, or tornadoes</li>
+</ul>
+
         </div>
         <section>
           <h3 className="h6 text-primary mt-4 mb-2">Our Promise to North Texas Homeowners</h3>
@@ -66,7 +67,7 @@ export default function AboutUs() {
       </footer>
       <style>{`
         .about-main-text {
-          font-size: 1.12em;
+          font-size: 1.13em;
           line-height: 1.7;
         }
         .about-ad-img {
