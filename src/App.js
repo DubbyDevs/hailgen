@@ -85,7 +85,7 @@ function Navbar({ logoSrc, setLogoSrc }) {
       <style>{`
         .navbar-root {
           width: 100%;
-          background: #18428a;
+          background: linear-gradient(90deg, #13284c 0%, #317fc8 100%);
           box-shadow: 0 2px 16px #0c234016;
           z-index: 12;
         }
@@ -130,7 +130,7 @@ function Navbar({ logoSrc, setLogoSrc }) {
           transition: background 0.15s, color 0.15s;
         }
         .nav-link:hover, .nav-link.active {
-          background: #2b56a5;
+          background: linear-gradient(90deg, #13284c 0%,rgb(20, 95, 165) 100%);
           color: #ffd700;
         }
         .hamburger {
@@ -156,7 +156,7 @@ function Navbar({ logoSrc, setLogoSrc }) {
             top: 72px;
             left: 0;
             right: 0;
-            background: #18428a;
+            background: linear-gradient(90deg, #13284c 0%, #317fc8 100%);
             flex-direction: column;
             align-items: flex-start;
             padding: 1em 2em;

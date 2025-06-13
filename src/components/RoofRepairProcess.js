@@ -4,6 +4,27 @@ export default function RoofRepairProcess() {
   return (
     <div className="container">
       <div className="main-card">
+        {/* Top Centered Logo */}
+        <div style={{
+          width: "100%",
+          textAlign: "center",
+          marginBottom: 14
+        }}>
+          <img
+            src="/texasroofinginfo.png"
+            alt="Texas Roofing Info Logo"
+            style={{
+              maxWidth: 400,
+              width: "100%",
+              height: "auto",
+              margin: "0 auto",
+              display: "block",
+              background: "#fff",
+              borderRadius: 3,
+              boxShadow: "none"
+            }}
+          />
+        </div>
         <h1 className="display-5 page-title">Our Stress-Free Roof Repair & Insurance Process – North Texas</h1>
         <h2 className="h4 mb-4 text-primary text-center">
           Get Your Hail or Storm-Damaged Roof Fixed with Zero Hassle. We Handle Everything!
