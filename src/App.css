@@ -177,3 +177,25 @@ ul {
     columns: 1;
   }
 }
+/* Universal title/section header class */
+.section-title {
+  font-size: 2rem; /* or bigger! */
+  font-weight: 800;
+  line-height: 1.18;
+  background: linear-gradient(90deg, #133267 0%, #18428a 60%, #5cb8ff 100%);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 1.8em;
+  margin-bottom: 0.85em;
+  letter-spacing: 0.5px;
+}
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 1.35rem;
+    margin-top: 1em;
+    margin-bottom: 0.7em;
+  }
+}
