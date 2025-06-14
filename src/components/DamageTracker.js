@@ -459,16 +459,6 @@ export default function DamageTracker() {
           <a href="/contact" className="btn btn-primary submit-btn">Book Your Free Roof Inspection</a>
         </div>
       </div>
-      <footer className="footer">
-        <div>
-           Hail damage tracker for Dallas, Fort Worth, Plano, Frisco, McKinney, Denton, and all North Texas. Recent storm map and insurance claim deadlines for local homeowners.TexasRoofing.info is NOT affiliated with TexasRoofing.com
-        </div>
-        <div>
-          <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: "#888", fontSize: "0.96em" }}>
-            Terms & Privacy Policy
-          </a>
-        </div>
-      </footer>
       {/* --- Custom Responsive Styles --- */}
       <style>{`
         .hail-image-row {

@@ -70,14 +70,6 @@ export default function RoofRepairProcess() {
           </div>
         </div>
       </div>
-      <footer className="footer">
-        <div>
-          TexasRoofing.info is NOT affiliated with TexasRoofing.com - The easiest, most stress-free way to get your insurance-covered roof repair or replacement in Dallas-Fort Worth, Plano, Frisco, McKinney, and all North Texas.
-        </div>
-        <div>
-          Keywords: Texas roof insurance process, hail storm roof inspection, DFW roof repair help, free roof damage estimate, North Texas insurance claim roofer, stress free roof replacement, storm damage roof claim, Dallas Fort Worth roofing company, best roofers Plano, quick roof inspection, local roofing contractors near me.
-        </div>
-      </footer>
     </div>
   );
 }

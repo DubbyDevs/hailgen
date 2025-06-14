@@ -10,7 +10,7 @@ export default function RoofLeadGen() {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ paddingBottom: "4rem" }}>
       <div className="main-card">
         {/* Logo at top, inside main-card */}
         <div style={{ width: "100%", textAlign: "center", marginBottom: 0 }}>
@@ -159,16 +159,6 @@ export default function RoofLeadGen() {
             location="Fort Worth, TX"
           />
         </div>
-
-        {/* SEO FOOTER */}
-        <footer className="footer">
-          <div className="mb-2">
-            TexasRoofing.info is NOT affiliated with TexasRoofing.com - Local, licensed roofers serving Dallas-Fort Worth and all North Texas suburbs. Need help with hail damage or a roof insurance claim? Request your free estimate now.
-          </div>
-          <div className="mb-1">
-            Keywords: North Texas hail damage, roof repair after storm, insurance covered roof replacement, free roof inspection Dallas, storm damage Frisco, best roofer McKinney, emergency roof leak, roofing contractor Plano, hailstorm repairs, local roof estimate, trusted roofing company DFW.
-          </div>
-        </footer>
       </div>
     </div>
   );

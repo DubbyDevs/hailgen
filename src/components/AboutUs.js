@@ -57,14 +57,7 @@ export default function AboutUs() {
           </p>
         </section>
       </div>
-      <footer className="footer">
-        <div>
-          TexasRoofing.info is NOT affiliated with TexasRoofing.com. Family-owned, insured DFW roofing company serving Dallas, Fort Worth, Denton, Plano, McKinney, Frisco, and all North Texas.
-        </div>
-        <div>
-          Keywords: about Texas roofing company, local storm damage repair DFW, insured roofer Dallas, Fort Worth, Denton, Plano, McKinney, best North Texas roofing team, family owned, licensed roofing contractor.
-        </div>
-      </footer>
+      
       <style>{`
         .about-main-text {
           font-size: 1.13em;

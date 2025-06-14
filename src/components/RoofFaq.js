@@ -86,14 +86,7 @@ export default function RoofFAQ() {
           </ul>
         </div>
       </div>
-      <footer className="footer">
-        <div>
-          TexasRoofing.info is not affiliated with TexasRoofing.com - Roofing, hail and storm damage FAQ for DFW, Plano, Frisco, McKinney, and all North Texas. Call for your free inspection today!
-        </div>
-        <div>
-          Keywords: roof repair FAQ, Texas hail damage insurance, free roof inspection, DFW storm roof help, claim process answers, best roofing company reviews, local roofer testimonials Dallas, Plano, Frisco, McKinney, Denton.
-        </div>
-      </footer>
+     
     </div>
   );
 }

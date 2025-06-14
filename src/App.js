@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-
+import TermsPage from "./components/TermsPage"; 
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
-
 
 import RoofLeadGen from "./components/RoofLeadGen";
 import RoofRepairProcess from "./components/RoofRepairProcess";
 import DamageTracker from "./components/DamageTracker";
 import RoofFAQ from "./components/RoofFaq";
-import BlogPage from "./components/BlogPage";
+
 import AboutUs from "./components/AboutUs";
 import ContactPage from "./components/Contact";
 
@@ -19,6 +18,7 @@ const navLinks = [
   { name: "FAQ", path: "/faq" },
   { name: "About Us", path: "/about" },
   { name: "Contact", path: "/contact" },
+  { name: "Terms", path: "/terms" }
 ];
 
 function Navbar({ logoSrc, setLogoSrc }) {
@@ -36,7 +36,6 @@ function Navbar({ logoSrc, setLogoSrc }) {
   const isActive = (path) => location.pathname === path;
 
   return (
-    
     <nav className="navbar-root">
       <div className="navbar-container">
         {/* Logo */}
@@ -95,7 +94,7 @@ function Navbar({ logoSrc, setLogoSrc }) {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0.4em 2vw 0.4em 2vw;
+          padding: 0.2em 2vw 0.4em 2vw;
         }
         .logo-btn {
           padding: 0;
@@ -159,7 +158,7 @@ function Navbar({ logoSrc, setLogoSrc }) {
             background: linear-gradient(90deg, #13284c 0%, #317fc8 100%);
             flex-direction: column;
             align-items: flex-start;
-            padding: 1em 2em;
+            padding: 1em em;
             gap: 0.2em;
             display: none;
           }
@@ -175,7 +174,6 @@ function Navbar({ logoSrc, setLogoSrc }) {
   );
 }
 
-// --- Animated routes with fade (fixed for React 18+) ---
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -191,7 +189,9 @@ function AnimatedRoutes() {
               <Route path="/faq" element={<RoofFAQ />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              {/* Catch-all for 404 */}
+              <Route path="/terms" element={<TermsPage />} />
             </Routes>
           </div>
         }
@@ -206,29 +206,12 @@ export default function App() {
   return (
     <Router>
       <Navbar logoSrc={logoSrc} setLogoSrc={setLogoSrc} />
-      <main className="max-w-4xl mx-auto px-2 md:px-6 py-6 md:py-12">
+      <main className="main-content">
         <AnimatedRoutes />
       </main>
-      {/* Fade CSS for route transitions */}
-      <style>{`
-        .fade-page {
-          min-height: 60vh;
-        }
-        .fade-enter {
-          opacity: 0;
-        }
-        .fade-enter-active {
-          opacity: 1;
-          transition: opacity 360ms cubic-bezier(.48,.2,.43,1.01);
-        }
-        .fade-exit {
-          opacity: 1;
-        }
-        .fade-exit-active {
-          opacity: 0;
-          transition: opacity 340ms cubic-bezier(.65,.1,.53,1.01);
-        }
-      `}</style>
+     
+      {/* Styles for layout and fade transitions */}
+      
     </Router>
   );
 }
