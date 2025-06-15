@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   // Controlled input changes
   const handleChange = (e) => {
@@ -12,24 +13,35 @@ export default function ContactPage() {
   // Custom AJAX submit to Formspree, show thank you & image
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://formspree.io/f/xrbkqorq", {
-      method: "POST",
-      headers: { Accept: "application/json" },
-      body: new FormData(e.target),
-    });
-    if (response.ok) setSubmitted(true);
-    // Optional: handle error with else {}
+    setError("");
+    const FORMSPREE_URL = "https://formspree.io/f/mwpbbbyz";
+    try {
+      const response = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(e.target),
+      });
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        setError("There was a problem submitting the form. Please try again.");
+      }
+    } catch {
+      setError("Network error. Please try again later.");
+    }
   };
 
   return (
     <div className="container">
       <div className="main-card">
         {/* Logo centered above title */}
-        <div style={{
-          display: "flex",
-          justifyContent: "center",
-          margin: "0em 0 0em 0"
-        }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "0em 0 0em 0"
+          }}
+        >
           <img
             src="/texasroofinginfo.png"
             alt="Texas Roofing Info Logo"
@@ -85,6 +97,7 @@ export default function ContactPage() {
               <button type="submit" className="btn btn-primary submit-btn w-100">
                 Send Message
               </button>
+              {error && <div style={{ color: "#d44", marginTop: 12 }}>{error}</div>}
             </form>
           ) : (
             <div className="text-center py-4">
@@ -117,7 +130,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      
     </div>
   );
 }

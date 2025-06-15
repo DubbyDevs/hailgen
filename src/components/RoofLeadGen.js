@@ -1,7 +1,7 @@
 import ReviewCard from "./ReviewCard";
 import React, { useState } from "react";
 
-const FORMSPREE_URL = "https://formspree.io/f/xrbkqorq";
+const FORMSPREE_URL = "https://formspree.io/f/mwpbbbyz";
 
 export default function RoofLeadGen() {
   const [submitted, setSubmitted] = useState(false);
@@ -9,6 +9,7 @@ export default function RoofLeadGen() {
   const [error, setError] = useState("");
   const [form, setForm] = useState({
     name: "",
+    email: "",
     address: "",
     phone: "",
     description: "",
@@ -40,6 +41,7 @@ export default function RoofLeadGen() {
         setSubmitted(true);
         setForm({
           name: "",
+          email: "",
           address: "",
           phone: "",
           description: "",
@@ -135,6 +137,18 @@ export default function RoofLeadGen() {
                     />
                   </div>
                   <div className="mb-3">
+                    <label className="form-label">Email</label>
+                    <input
+                      required
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      className="form-control"
+                      autoComplete="email"
+                    />
+                  </div>
+                  <div className="mb-3">
                     <label className="form-label">Address</label>
                     <input
                       required
@@ -150,6 +164,7 @@ export default function RoofLeadGen() {
                     <input
                       required
                       name="phone"
+                      type="tel"
                       value={form.phone}
                       onChange={handleChange}
                       className="form-control"
