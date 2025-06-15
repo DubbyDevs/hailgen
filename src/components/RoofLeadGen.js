@@ -1,18 +1,65 @@
 import ReviewCard from "./ReviewCard";
 import React, { useState } from "react";
 
+const FORMSPREE_URL = "https://formspree.io/f/xrbkqorq";
+
 export default function RoofLeadGen() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    address: "",
+    phone: "",
+    description: "",
+    stormDate: "",
+    insurance: ""
+  });
 
-  // This handler ONLY flips the submitted flag for the thank you message
-  const handleFormSubmit = (e) => {
-    setSubmitted(true);
+  // Controlled input handler
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  // AJAX form submit
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    setError("");
+
+    const formData = new FormData();
+    Object.entries(form).forEach(([key, value]) => formData.append(key, value));
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        setForm({
+          name: "",
+          address: "",
+          phone: "",
+          description: "",
+          stormDate: "",
+          insurance: ""
+        });
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("There was a network error. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
     <div className="container" style={{ paddingBottom: "4rem" }}>
       <div className="main-card">
-        {/* Logo at top, inside main-card */}
+        {/* Logo at top */}
         <div style={{ width: "100%", textAlign: "center", marginBottom: 0 }}>
           <img
             src="/texasroofinginfo.png"
@@ -40,7 +87,7 @@ export default function RoofLeadGen() {
           Insurance may cover a full roof replacement—don’t miss your chance to get your roof fixed at no cost to you!
         </p>
 
-        {/* Two-column layout (desktop: side-by-side, mobile: stacked) */}
+        {/* Two-column layout */}
         <div className="row justify-content-center mb-4 g-4">
           {/* Why Choose Us column */}
           <div className="col-12 col-lg-6">
@@ -72,41 +119,82 @@ export default function RoofLeadGen() {
           <div className="col-12 col-lg-6">
             <div className="card p-4 h-100">
               {!submitted ? (
-                <form
-                  action="https://formspree.io/f/xrbkqorq"
-                  method="POST"
-                  onSubmit={handleFormSubmit}
-                >
+                <form onSubmit={handleFormSubmit}>
                   <h3 className="h5 text-primary mb-3">
                     Request Your Free, No-Obligation Roof Inspection
                   </h3>
                   <div className="mb-3">
                     <label className="form-label">Name</label>
-                    <input required name="name" className="form-control" />
+                    <input
+                      required
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      className="form-control"
+                      autoComplete="name"
+                    />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Address</label>
-                    <input required name="address" className="form-control" />
+                    <input
+                      required
+                      name="address"
+                      value={form.address}
+                      onChange={handleChange}
+                      className="form-control"
+                      autoComplete="street-address"
+                    />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Phone</label>
-                    <input required name="phone" className="form-control" />
+                    <input
+                      required
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      className="form-control"
+                      autoComplete="tel"
+                    />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Brief Description</label>
-                    <input name="description" className="form-control" />
+                    <input
+                      name="description"
+                      value={form.description}
+                      onChange={handleChange}
+                      className="form-control"
+                    />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Date of Storm</label>
-                    <input required type="date" name="stormDate" className="form-control" />
+                    <input
+                      required
+                      type="date"
+                      name="stormDate"
+                      value={form.stormDate}
+                      onChange={handleChange}
+                      className="form-control"
+                    />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Insurance Company</label>
-                    <input name="insurance" className="form-control" />
+                    <input
+                      name="insurance"
+                      value={form.insurance}
+                      onChange={handleChange}
+                      className="form-control"
+                    />
                   </div>
-                  <button type="submit" className="btn btn-primary submit-btn w-100">
-                    Request Inspection Now
+                  <button
+                    type="submit"
+                    className="btn btn-primary submit-btn w-100"
+                    disabled={sending}
+                  >
+                    {sending ? "Sending..." : "Request Inspection Now"}
                   </button>
+                  {error && (
+                    <div className="alert alert-danger mt-3">{error}</div>
+                  )}
                 </form>
               ) : (
                 <div className="text-center py-4">
@@ -124,7 +212,7 @@ export default function RoofLeadGen() {
                   <h3 className="text-success mb-3">Thank you!</h3>
                   <p>
                     We received your request. A North Texas roof expert will reach out ASAP to schedule your free inspection.<br />
-                    <strong>If this is urgent or your roof is leaking, call us immediately at (XXX) XXX-XXXX.</strong>
+                    <strong></strong>
                   </p>
                 </div>
               )}
@@ -133,20 +221,6 @@ export default function RoofLeadGen() {
         </div>
 
         <div className="d-flex flex-wrap align-items-center justify-content-center mb-4" style={{ gap: 24 }}>
-          {/* Logo (optional repeat, you can remove this if you only want the top logo) */}
-          {/* <img
-            src="/logo512.png"
-            alt="North Texas Roof Pros"
-            style={{
-              height: 192,
-              width: 192,
-              objectFit: "contain",
-              marginRight: 8,
-              borderRadius: 16,
-              boxShadow: "0 4px 16px rgba(50,70,100,0.08)"
-            }}
-          /> */}
-
           {/* Review cards */}
           <ReviewCard
             quote="After the Plano hail storm, these guys handled everything with my insurance and got my roof replaced fast. Stress free!"
